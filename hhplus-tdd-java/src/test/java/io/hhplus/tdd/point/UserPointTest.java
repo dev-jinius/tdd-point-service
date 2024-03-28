@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import static io.hhplus.tdd.exception.TddErrorCode.NOT_ENOUGH_POINT;
 import static org.mockito.Mockito.when;
 
+/**
+ * 유닛테스트 (도메인)
+ */
 class UserPointTest {
 
     /**

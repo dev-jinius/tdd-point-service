@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import static io.hhplus.tdd.exception.TddErrorCode.NOT_ENOUGH_POINT;
 import static io.hhplus.tdd.exception.TddErrorCode.NOT_FOUND_USER;
 import static io.hhplus.tdd.point.TransactionType.CHARGE;
+import static io.hhplus.tdd.point.TransactionType.USE;
 
 @Service
 @RequiredArgsConstructor
@@ -68,7 +69,7 @@ public class PointService {
         dbUserPoint.use(amount);
 
         UserPoint usedUserPoint = userPointRepository.insertOrUpdate(dbUserPoint.getId(), dbUserPoint.getPoint());
-        pointHistoryRepository.insert(id, dbUserPoint.getPoint(), CHARGE, System.currentTimeMillis());
+        pointHistoryRepository.insert(id, dbUserPoint.getPoint(), USE, System.currentTimeMillis());
 
         return UserPointDto.of(usedUserPoint);
     }
